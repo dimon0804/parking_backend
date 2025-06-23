@@ -1,5 +1,6 @@
 package com.example.parking.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+
 public class CarOwner {
 
     @Id
@@ -22,6 +24,7 @@ public class CarOwner {
     private String phone;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Car> cars;
 
     public String getFullName() {
